@@ -171,17 +171,14 @@ git push --all google
 
 kubectl apply -f extras/jwt/jwt-secret.yaml  --context=${CTX_2}
 git checkout -b cymbal-dev 
-sed -i '' 's/version: v1/version: v2/g' kubernetes-manifests/frontend.yaml
-sed -i '' 's/# - name: CYMBAL_LOGO/- name: CYMBAL_LOGO/g' kubernetes-manifests/frontend.yaml
-sed -i '' 's/#   value: "false"/  value: "true"/g' kubernetes-manifests/frontend.yaml
-sed -i '' 's/cymbal-bank-prod/cymbal-bank-dev/g' cloudbuild.yaml
+sed -i 's/version: v1/version: v2/g' kubernetes-manifests/frontend.yaml
+sed -i 's/# - name: CYMBAL_LOGO/- name: CYMBAL_LOGO/g' kubernetes-manifests/frontend.yaml
+sed -i 's/#   value: "false"/  value: "true"/g' kubernetes-manifests/frontend.yaml
+sed -i 's/cymbal-bank-prod/cymbal-bank-dev/g' cloudbuild.yaml
 gcloud beta builds triggers create cloud-source-repositories --repo=cymbal-bank-repo --branch-pattern=cymbal-dev  --build-config=cloudbuild.yaml 
 git add . 
 git commit -m "initial push to cymbal-dev branch."
 git push --all google
-
-
-read -p "Hit Enter in terminal 3!!!! Hit ENTER here to continue"
 
 cd ..
 gcloud container hub memberships register cymbal-bank-prod \
@@ -217,9 +214,7 @@ kubectl label namespace default  istio-injection- istio.io/rev=asm-181-5 --overw
 read -p "check the progress on Task 16 and hit ENTER when it is green" 
 kubectl label namespace default  istio-injection- istio.io/rev=asm-183-2 --overwrite --context=${CTX_1}
 
-
- read -p "Check that it is installing ASM, if not, do it manually and hit ENTER here afterwards!"
-
+ 
 kubectl label namespace default  istio-injection- istio.io/rev=asm-181-5 --overwrite --context=${CTX_2}
 
 read -p "check the progress on Task 18 and hit ENTER when both are green" 

@@ -19,14 +19,14 @@ read -p "Hit ENTER to continue"
 
 
 migctl migration get ledgermonolith-migration
-sed -i 's#<folder>#/var/lib/postgresql#g' ledgermonolith-migration.yaml
 
+sed -i '' 's/<folder>/'/var/libpostgresql'/g' ledgermonolith-migration.yaml
 echo "add   /var/lib/postgresql    to the dataVolumes/folders: section"
 read -p "Hit ENTER to continue"
 
 migctl migration update ledgermonolith-migration --file ledgermonolith-migration.yaml
 
-echo "check status of the migration by running       migctl migration status ledgermonolith-migration    . "
+echo "check status of the migration by running       migctl migration status ledgermonolith-migration. Only continue when status shows completed."
 read -p "Hit ENTER to continue"
 migctl migration generate-artifacts ledgermonolith-migration.yaml
 
