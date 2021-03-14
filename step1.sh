@@ -41,5 +41,4 @@ gcloud container clusters get-credentials m4a-processing --zone us-central1-a --
 
 migctl setup install --json-key=m4a-install.json
 
-read -p "Run: migctl doctor  - until deployemnt, docker registry and artifacts repo show checkmarks "
-read -p "Move on to next script terminal1-2.sh"
+echo "FIRST STEP DONE! MOVE ON TO STEP 2 !
