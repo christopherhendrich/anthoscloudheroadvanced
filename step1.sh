@@ -23,7 +23,7 @@ gcloud services enable \
    gkehub.googleapis.com \
    cloudresourcemanager.googleapis.com \
    artifactregistry.googleapis.com \
-   sourcerepo.googleapis.com/
+   sourcerepo.googleapis.com
 
  #Create m4a processing cluster  
  gcloud container clusters create m4a-processing \

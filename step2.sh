@@ -20,7 +20,7 @@ read -p "Hit ENTER to continue"
 
 migctl migration get ledgermonolith-migration
 
-sed -i '' 's/<folder>/'/var/libpostgresql'/g' ledgermonolith-migration.yaml
+sed -i 's#<folder>#/var/lib/postgresql#g' ledgermonolith-migration.yaml
 echo "add   /var/lib/postgresql    to the dataVolumes/folders: section"
 read -p "Hit ENTER to continue"
 

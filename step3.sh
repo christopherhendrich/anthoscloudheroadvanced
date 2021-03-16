@@ -15,10 +15,8 @@ cd bank-of-anthos
 git reset --hard 802d39e17c6bc7ddfe87dde82b94af9aca0e7397
 git config credential.helper gcloud.sh
 git remote add google https://source.developers.google.com/p/${PROJECT_ID}/r/cymbal-bank-repo
-echo "Enter the qwiklab user's name" 
-read USER_NAME
-git config --global user.email "${USER_NAME}@qwiklabs.net"
-git config --global user.name "${USER_NAME}"
+git config --global user.email "user1@qwiklabs.net"
+git config --global user.name "user1"
 git add . 
 git commit -m "pushing code" 
 git push --all google
@@ -206,7 +204,7 @@ gcloud container hub memberships register cymbal-bank-dev \
   --mode install \
   --enable_all
 
-read -p "Check that it is installing ASM, if not, do it manually and hit ENTER here afterwards!"
+#read -p "Check that it is installing ASM, if not, do it manually and hit ENTER here afterwards!"
 
 
 kubectl label namespace default  istio-injection- istio.io/rev=asm-181-5 --overwrite --context=${CTX_1}
